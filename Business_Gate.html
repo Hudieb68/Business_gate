@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Gate - بيزنس جيت | تأسيس الشركات والاستشارات في قطر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d462b;
+            --accent-color: #c69214;
+            --dark-color: #1a1a1a;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        /* اللوجو الجديد الرسمي */
+        .logo-img {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-switch-btn {
+            background: transparent;
+            border: 1.5px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: all 0.3s;
+        }
+
+        .lang-switch-btn:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-contact {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-contact:hover {
+            background: #08301d;
+            box-shadow: 0 4px 12px rgba(13,70,43,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(13,70,43,0.95), rgba(8,48,29,0.9)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover;
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn-gold {
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            transition: all 0.3s;
+        }
+
+        .btn-gold:hover {
+            background: #a87b0f;
+            transform: translateY(-2px);
+        }
+
+        /* Features/Services */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 2rem auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .nav-links { display: none; }
+        }
+
+        /* Call to Action */
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), #08301d);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 4rem auto;
+        }
+
+        .cta-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* Contact Section Layout */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .contact-grid .cta-box {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .contact-form-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-form-card > p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: inherit;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--dark-color);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid #dfe3e6;
+            border-radius: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.95rem;
+            color: var(--dark-color);
+            background: var(--light-bg);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13,70,43,0.12);
+            background: var(--white);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.9rem 1.4rem;
+            border-radius: 30px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 0.4rem;
+        }
+
+        .btn-submit:hover {
+            background: #08301d;
+            box-shadow: 0 4px 12px rgba(13,70,43,0.3);
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 1.4rem;
+            border-radius: 12px;
+            background: #eaf4ec;
+            border: 1.5px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Business Gate - بيزنس جيت" class="logo-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero" data-key="navHome">الرئيسية</a></li>
+                <li><a href="#about" data-key="navAbout">عن الشركة</a></li>
+                <li><a href="#services" data-key="navServices">خدماتنا</a></li>
+                <li><a href="#contact" data-key="navContact">اتصل بنا</a></li>
+            </ul>
+            <div class="nav-right-actions">
+                <button id="langToggleBtn" class="lang-switch-btn">English</button>
+                <a href="#contact" class="btn-contact" data-key="btnContact">تواصل معنا</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <h1 id="heroTitle">حقق طموحك التجاري في <span>قطر</span></h1>
+            <p id="heroSubtitle">نرافقك في كافة خطوات تأسيس وإدارة وتنمية أعمالك باستشارات احترافية وحلول متكاملة.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn-gold" id="heroBtn">ابدأ مشروعك الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="section-title">
+            <h2 data-key="servicesTitle">خدماتنا المتكاملة</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🇶🇦</span>
+                <h3 data-key="service1Title">تأسيس الشركات</h3>
+                <p data-key="service1Desc">تخليص كافة إجراءات تأسيس الشركات وإصدار السجلات التجارية باحترافية وسرعة قياسية.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏢</span>
+                <h3 data-key="service2Title">المقرات الإدارية</h3>
+                <p data-key="service2Desc">توفر مكاتب ومقرات إدارية معتمدة ومتوافقة مع الاشتراطات الحكومية لمشروعك.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📝</span>
+                <h3 data-key="service3Title">التسجيل القانوني</h3>
+                <p data-key="service3Desc">صياغة العقود واستخراج التراخيص اللازمة وضمان التزام مشروعك بالأنظمة والقوانين.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🤝</span>
+                <h3 data-key="service4Title">الجدوى الاقتصادية</h3>
+                <p data-key="service4Desc">دراسات تحليليّة شاملة للسوق والفرص الاستثمارية لضمان نجاح واستدامة مشروعك.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3 data-key="service5Title">استشارات مالية وإدارية متكاملة</h3>
+                <p data-key="service5Desc">تخطيط مالي وهيكلة إدارية ممتازة لرفع كفاءة تشغيل شركتك وتحقيق أقصى ربحية.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📈</span>
+                <h3 data-key="service6Title">دعم مستمر لنمو الأعمال والاستثمارات</h3>
+                <p data-key="service6Desc">شراكة استراتيجية مستمرة لتطوير أعمالك وتوسيع نطاق استثماراتك داخل وخارج قطر.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="about-section">
+            <div class="about-grid">
+                <div>
+                    <h2 style="color: var(--primary-color); margin-bottom: 1rem;" data-key="aboutTitle">عن بيزنس جيت (Business Gate)</h2>
+                    <p style="color: #444; margin-bottom: 1rem;" data-key="aboutP1">نحن شريكك الاستراتيجي الموثوق لتأسيس وتطوير الشركات في دولة قطر. نمتلك خبرة عميقة في بيئة الأعمال المحلية ونقدم لك حلولاً متكاملة تختصر عليك الوقت والجهد.</p>
+                    <p style="color: #444;" data-key="aboutP2">سواء كنت تبدأ مشروك الأول أو تتوسع بستثماراتك، نضمن لك الانطلاقة الأسرع والأكثر أماناً.</p>
+                </div>
+                <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-right: 4px solid var(--accent-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 10px;" data-key="whyTitle">لماذا تختار بيزنس جيت؟</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 8px;" data-key="why1">✓ سرعة وكفاءة في تنفيذ المعاملات</li>
+                        <li style="margin-bottom: 8px;" data-key="why2">✓ فريق استشاري ذو خبرة عالية</li>
+                        <li style="margin-bottom: 8px;" data-key="why3">✓ دعم متكامل من الألف إلى الياء</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action & Contact -->
+    <section class="section" id="contact">
+        <div class="section-title">
+            <h2 data-key="contactSectionTitle">تواصل معنا</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="cta-box">
+                <h2 data-key="ctaTitle">هل أنت جاهز لإطلاق مشروعك اليوم؟</h2>
+                <p style="margin-bottom: 2rem;" data-key="ctaDesc">تواصل مع فريقنا الآن للحصول على استشارة أولية مجانية لبدء عملك في قطر.</p>
+                <a href="https://wa.me/97430886552" target="_blank" class="btn-gold" style="font-size: 1.1rem; padding: 0.9rem 2.5rem;" data-key="whatsappBtn">📱 تواصل عبر الواتساب</a>
+            </div>
+
+            <div class="contact-form-card">
+                <h3 data-key="formTitle">اطلب استشارتك الآن</h3>
+                <p data-key="formSubtitle">عبّئ بياناتك وسيتواصل معك فريقنا خلال وقت قصير.</p>
+
+                <form id="contactForm" action="https://formspree.io/f/moeaewjg" method="POST">
+                    <input type="hidden" id="selectedLanguage" name="selectedLanguage" value="Arabic">
+
+                    <div class="form-group">
+                        <label for="fullName" data-key="labelName">الاسم الكامل</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="اكتب اسمك الكامل" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" data-key="labelPhone">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+974 XXXX XXXX" pattern="^[0-9+\s]{7,15}$" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceType" data-key="labelService">نوع الخدمة المطلوبة</label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="" disabled selected id="optSelectDefault">اختر الخدمة المناسبة لك</option>
+                            <option value="company-formation" id="optCompany">تأسيس الشركات</option>
+                            <option value="office-space" id="optOffice">المقرات الإدارية</option>
+                            <option value="legal-registration" id="optLegal">التسجيل القانوني والتراخيص</option>
+                            <option value="feasibility-study" id="optFeasibility">دراسة الجدوى الاقتصادية</option>
+                            <option value="financial-consulting" id="optFinancial">استشارات مالية وإدارية</option>
+                            <option value="business-growth" id="optGrowth">دعم نمو الأعمال والاستثمارات</option>
+                            <option value="other" id="optOther">خدمة أخرى</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="btnSubmit" data-key="btnSubmit">إرسال الطلب</button>
+                </form>
+
+                <div class="form-success" id="formSuccess" role="status" data-key="formSuccessMsg">
+                    ✓ تم استلام طلبك بنجاح، وسيتواصل معك فريق بيزنس جيت في أقرب وقت ممكن.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p id="footerText">&copy; 2026 جميع الحقوق محفوظة لشركة Business Gate - بيزنس جيت</p>
+    </footer>
+
+    <script>
+        // Dictionary for Translations
+        const translations = {
+            ar: {
+                pageTitle: "Business Gate - بيزنس جيت | تأسيس الشركات والاستشارات في قطر",
+                navHome: "الرئيسية",
+                navAbout: "عن الشركة",
+                navServices: "خدماتنا",
+                navContact: "اتصل بنا",
+                btnContact: "تواصل معنا",
+                heroTitle: 'حقق طموحك التجاري في <span>قطر</span>',
+                heroSubtitle: "نرافقك في كافة خطوات تأسيس وإدارة وتنمية أعمالك باستشارات احترافية وحلول متكاملة.",
+                heroBtn: "ابدأ مشروعك الآن",
+                servicesTitle: "خدماتنا المتكاملة",
+                service1Title: "تأسيس الشركات",
+                service1Desc: "تخليص كافة إجراءات تأسيس الشركات وإصدار السجلات التجارية باحترافية وسرعة قياسية.",
+                service2Title: "المقرات الإدارية",
+                service2Desc: "توفر مكاتب ومقرات إدارية معتمدة ومتوافقة مع الاشتراطات الحكومية لمشروعك.",
+                service3Title: "التسجيل القانوني",
+                service3Desc: "صياغة العقود واستخراج التراخيص اللازمة وضمان التزام مشروعك بالأنظمة والقوانين.",
+                service4Title: "الجدوى الاقتصادية",
+                service4Desc: "دراسات تحليليّة شاملة للسوق والفرص الاستثمارية لضمان نجاح واستدامة مشروعك.",
+                service5Title: "استشارات مالية وإدارية متكاملة",
+                service5Desc: "تخطيط مالي وهيكلة إدارية ممتازة لرفع كفاءة تشغيل شركتك وتحقيق أقصى ربحية.",
+                service6Title: "دعم مستمر لنمو الأعمال والاستثمارات",
+                service6Desc: "شراكة استراتيجية مستمرة لتطوير أعمالك وتوسيع نطاق استثماراتك داخل وخارج قطر.",
+                aboutTitle: "عن بيزنس جيت (Business Gate)",
+                aboutP1: "نحن شريكك الاستراتيجي الموثوق لتأسيس وتطوير الشركات في دولة قطر. نمتلك خبرة عميقة في بيئة الأعمال المحلية ونقدم لك حلولاً متكاملة تختصر عليك الوقت والجهد.",
+                aboutP2: "سواء كنت تبدأ مشروك الأول أو تتوسع بستثماراتك، نضمن لك الانطلاقة الأسرع والأكثر أماناً.",
+                whyTitle: "لماذا تختار بيزنس جيت؟",
+                why1: "✓ سرعة وكفاءة في تنفيذ المعاملات",
+                why2: "✓ فريق استشاري ذو خبرة عالية",
+                why3: "✓ دعم متكامل من الألف إلى الياء",
+                contactSectionTitle: "تواصل معنا",
+                ctaTitle: "هل أنت جاهز لإطلاق مشروعك اليوم؟",
+                ctaDesc: "تواصل مع فريقنا الآن للحصول على استشارة أولية مجانية لبدء عملك في قطر.",
+                whatsappBtn: "📱 تواصل عبر الواتساب",
+                formTitle: "اطلب استشارتك الآن",
+                formSubtitle: "عبّئ بياناتك وسيتواصل معك فريقنا خلال وقت قصير.",
+                labelName: "الاسم الكامل",
+                placeholderName: "اكتب اسمك الكامل",
+                labelPhone: "رقم الهاتف",
+                labelService: "نوع الخدمة المطلوبة",
+                optSelectDefault: "اختر الخدمة المناسبة لك",
+                optCompany: "تأسيس الشركات",
+                optOffice: "المقرات الإدارية",
+                optLegal: "التسجيل القانوني والتراخيص",
+                optFeasibility: "دراسة الجدوى الاقتصادية",
+                optFinancial: "استشارات مالية وإدارية",
+                optGrowth: "دعم نمو الأعمال والاستثمارات",
+                optOther: "خدمة أخرى",
+                btnSubmit: "إرسال الطلب",
+                btnSubmitting: "جاري الإرسال...",
+                formSuccessMsg: "✓ تم استلام طلبك بنجاح، وسيتواصل معك فريق بيزنس جيت في أقرب وقت ممكن.",
+                footerText: "© 2026 جميع الحقوق محفوظة لشركة Business Gate - بيزنس جيت",
+                errorAlert: "حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً أو التواصل عبر الواتساب.",
+                connErrorAlert: "حدث خطأ في الاتصال، يرجى التأكد من اتصال الإنترنت."
+            },
+            en: {
+                pageTitle: "Business Gate | Company Formation & Advisory in Qatar",
+                navHome: "Home",
+                navAbout: "About Us",
+                navServices: "Services",
+                navContact: "Contact Us",
+                btnContact: "Get in Touch",
+                heroTitle: 'Achieve Your Business Ambitions in <span>Qatar</span>',
+                heroSubtitle: "We guide you through every step of establishing, managing, and growing your business with professional consultation and integrated solutions.",
+                heroBtn: "Start Your Project Now",
+                servicesTitle: "Our Comprehensive Services",
+                service1Title: "Company Formation",
+                service1Desc: "Complete all company formation procedures and commercial registration issuance with high efficiency.",
+                service2Title: "Corporate Offices",
+                service2Desc: "Approved office spaces compliant with all government requirements for your business.",
+                service3Title: "Legal Registration",
+                service3Desc: "Contract drafting, obtaining necessary licenses, and ensuring full legal compliance.",
+                service4Title: "Feasibility Studies",
+                service4Desc: "Comprehensive market analysis and investment opportunity evaluation for sustainable growth.",
+                service5Title: "Financial & Advisory Services",
+                service5Desc: "Financial planning and executive structuring to enhance operational efficiency and profitability.",
+                service6Title: "Business Growth Support",
+                service6Desc: "Ongoing strategic partnership to scale your business inside and outside Qatar.",
+                aboutTitle: "About Business Gate",
+                aboutP1: "We are your trusted strategic partner for company formation and business development in Qatar. Deep expertise in the local market delivers seamless solutions saving you time and effort.",
+                aboutP2: "Whether launching your first enterprise or expanding existing operations, we ensure a secure and swift market entry.",
+                whyTitle: "Why Choose Business Gate?",
+                why1: "✓ Speed and efficiency in execution",
+                why2: "✓ High-level advisory experts",
+                why3: "✓ End-to-end comprehensive support",
+                contactSectionTitle: "Contact Us",
+                ctaTitle: "Ready to launch your project today?",
+                ctaDesc: "Connect with our team now for a free initial consultation to launch your business in Qatar.",
+                whatsappBtn: "📱 Contact via WhatsApp",
+                formTitle: "Request Consultation",
+                formSubtitle: "Fill in your details and our team will get back to you shortly.",
+                labelName: "Full Name",
+                placeholderName: "Enter your full name",
+                labelPhone: "Phone Number",
+                labelService: "Required Service",
+                optSelectDefault: "Select the service you need",
+                optCompany: "Company Formation",
+                optOffice: "Corporate Offices",
+                optLegal: "Legal & Licensing",
+                optFeasibility: "Feasibility Studies",
+                optFinancial: "Financial & Management Consulting",
+                optGrowth: "Business Growth Support",
+                optOther: "Other Service",
+                btnSubmit: "Submit Request",
+                btnSubmitting: "Submitting...",
+                formSuccessMsg: "✓ Your request has been received successfully. The Business Gate team will contact you shortly.",
+                footerText: "© 2026 All Rights Reserved - Business Gate",
+                errorAlert: "An error occurred while submitting. Please try again later or reach out via WhatsApp.",
+                connErrorAlert: "Connection error. Please check your internet connection."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        const langToggleBtn = document.getElementById('langToggleBtn');
+
+        langToggleBtn.addEventListener('click', function() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            applyLanguage(currentLang);
+        });
+
+        function applyLanguage(lang) {
+            const data = translations[lang];
+
+            // Toggle HTML direction & lang
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            // Page title
+            document.title = data.pageTitle;
+
+            // Lang toggle button text
+            langToggleBtn.innerText = lang === 'ar' ? 'English' : 'عربي';
+
+            // Text content elements with data-key
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (data[key]) {
+                    elem.innerText = data[key];
+                }
+            });
+
+            // Specific Elements with InnerHTML or placeholders
+            document.getElementById('heroTitle').innerHTML = data.heroTitle;
+            document.getElementById('heroSubtitle').innerText = data.heroSubtitle;
+            document.getElementById('heroBtn').innerText = data.heroBtn;
+
+            document.getElementById('fullName').placeholder = data.placeholderName;
+
+            document.getElementById('optSelectDefault').innerText = data.optSelectDefault;
+            document.getElementById('optCompany').innerText = data.optCompany;
+            document.getElementById('optOffice').innerText = data.optOffice;
+            document.getElementById('optLegal').innerText = data.optLegal;
+            document.getElementById('optFeasibility').innerText = data.optFeasibility;
+            document.getElementById('optFinancial').innerText = data.optFinancial;
+            document.getElementById('optGrowth').innerText = data.optGrowth;
+            document.getElementById('optOther').innerText = data.optOther;
+
+            document.getElementById('footerText').innerHTML = data.footerText;
+            document.getElementById('selectedLanguage').value = lang === 'ar' ? 'Arabic' : 'English';
+        }
+
+        // Formspree Handling
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const btnSubmit = document.getElementById('btnSubmit');
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+
+            const activeDict = translations[currentLang];
+            btnSubmit.innerText = activeDict.btnSubmitting;
+            btnSubmit.disabled = true;
+
+            const formData = new FormData(contactForm);
+
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    formSuccess.classList.add('show');
+                } else {
+                    alert(activeDict.errorAlert);
+                    btnSubmit.innerText = activeDict.btnSubmit;
+                    btnSubmit.disabled = false;
+                }
+            }).catch(error => {
+                alert(activeDict.connErrorAlert);
+                btnSubmit.innerText = activeDict.btnSubmit;
+                btnSubmit.disabled = false;
+            });
+        });
+    </script>
+
+</body>
+</html>
