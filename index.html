@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+<link rel="icon" type="image/png" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Gate - بيزنس جيت | تأسيس الشركات والاستشارات في قطر</title>
@@ -8,11 +9,16 @@
     <style>
         :root {
             --primary-color: #0d462b;
+            --primary-light: #15623d;
             --accent-color: #c69214;
-            --dark-color: #1a1a1a;
-            --light-bg: #f8f9fa;
+            --accent-light: #e0ab26;
+            --dark-color: #111827;
+            --light-bg: #f8fafc;
             --white: #ffffff;
-            --text-muted: #6c757d;
+            --text-muted: #64748b;
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+            --card-shadow-hover: 0 20px 35px -10px rgba(13, 70, 43, 0.12), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+            --transition-bounce: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -20,21 +26,26 @@
             margin: 0;
             padding: 0;
             font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f4f6f8;
+            background-color: #f1f5f9;
             color: var(--dark-color);
-            line-height: 1.6;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         /* Header & Nav */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: var(--transition-bounce);
         }
 
         .navbar {
@@ -43,146 +54,321 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
         }
 
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
+            transition: var(--transition-bounce);
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
         }
 
         /* اللوجو الجديد الرسمي */
         .logo-img {
-            height: 55px;
+            height: 52px;
             width: auto;
             display: block;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.2rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 500;
-            transition: color 0.3s;
+            color: #334155;
+            font-weight: 700;
+            font-size: 1.02rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            padding: 0.3rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2.5px;
+            background: var(--primary-color);
+            transition: var(--transition-bounce);
+            border-radius: 2px;
         }
 
         .nav-links a:hover {
             color: var(--primary-color);
         }
 
+        .nav-links a:hover::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+
         .nav-right-actions {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
+        /* 1. زر تغيير اللغة */
         .lang-switch-btn {
-            background: transparent;
+            background: rgba(13, 70, 43, 0.05);
             border: 1.5px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 0.4rem 0.9rem;
-            border-radius: 20px;
-            font-weight: 700;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 800;
             cursor: pointer;
-            font-size: 0.88rem;
-            transition: all 0.3s;
+            font-size: 0.9rem;
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .lang-switch-btn:hover {
             background: var(--primary-color);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(13, 70, 43, 0.2);
         }
 
+        .lang-switch-btn:active {
+            transform: translateY(0) scale(0.96);
+        }
+
+        /* 2. زر تواصل معنا في الهيدر */
         .btn-contact {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--white);
-            padding: 0.6rem 1.4rem;
-            border-radius: 30px;
+            padding: 0.65rem 1.6rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
+            font-weight: 800;
+            font-size: 0.95rem;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: var(--transition-bounce);
+            box-shadow: 0 4px 14px rgba(13, 70, 43, 0.25);
+        }
+
+        .btn-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
         }
 
         .btn-contact:hover {
-            background: #08301d;
-            box-shadow: 0 4px 12px rgba(13,70,43,0.3);
+            box-shadow: 0 8px 22px rgba(13, 70, 43, 0.38);
+            transform: translateY(-3px);
+        }
+
+        .btn-contact:hover::before {
+            left: 100%;
+        }
+
+        .btn-contact:active {
+            transform: translateY(-1px) scale(0.97);
+        }
+
+        /* 3. الأزرار الذهبية */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: var(--white);
+            padding: 0.95rem 2.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: var(--transition-bounce);
+            box-shadow: 0 6px 20px rgba(198, 146, 20, 0.35);
+        }
+
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(198, 146, 20, 0.48);
+        }
+
+        .btn-gold:hover::before {
+            left: 100%;
+        }
+
+        .btn-gold:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* نبض زر الواتساب */
+        a[data-key="whatsappBtn"] {
+            animation: pulse-whatsapp 2.5s infinite;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 0 0 0 rgba(198, 146, 20, 0.6);
+            }
+            70% {
+                box-shadow: 0 0 0 18px rgba(198, 146, 20, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(198, 146, 20, 0);
+            }
+        }
+
+        /* 4. زر إرسال النموذج */
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--white);
+            border: none;
+            padding: 1rem 1.6rem;
+            border-radius: 50px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 0.6rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: var(--transition-bounce);
+            box-shadow: 0 6px 18px rgba(13, 70, 43, 0.25);
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn-submit:hover {
+            box-shadow: 0 10px 25px rgba(13, 70, 43, 0.38);
+            transform: translateY(-3px);
+        }
+
+        .btn-submit:hover::before {
+            left: 100%;
+        }
+
+        .btn-submit:active {
+            transform: translateY(0) scale(0.98);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(13,70,43,0.95), rgba(8,48,29,0.9)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover;
+            background: linear-gradient(135deg, rgba(13,70,43,0.92), rgba(8,48,29,0.95)), url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
             color: var(--white);
-            padding: 5rem 2rem;
+            padding: 7rem 2rem 6.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to top, #f1f5f9, transparent);
         }
 
         .hero-container {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3.4rem;
             font-weight: 800;
-            margin-bottom: 1rem;
+            line-height: 1.25;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
             color: var(--white);
         }
 
         .hero h1 span {
             color: var(--accent-color);
+            background: linear-gradient(135deg, #f3cd68, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.92;
+            font-weight: 400;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-btns {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-        }
-
-        .btn-gold {
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 800;
-            transition: all 0.3s;
-        }
-
-        .btn-gold:hover {
-            background: #a87b0f;
-            transform: translateY(-2px);
+            gap: 1.2rem;
         }
 
         /* Features/Services */
         .section {
-            padding: 4rem 2rem;
+            padding: 5.5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            font-weight: 800;
             color: var(--primary-color);
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
 
         .section-title h2::after {
@@ -191,83 +377,159 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
+            width: 70px;
+            height: 4.5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 2.2rem;
         }
 
         .service-card {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary-color);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-top: 5px solid var(--primary-color);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(13, 70, 43, 0.03), transparent);
+            opacity: 0;
+            transition: var(--transition-bounce);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+            border-top-color: var(--accent-color);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
             display: inline-block;
+            background: #f0fdf4;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            text-align: center;
+            border-radius: 18px;
+            border: 1px solid rgba(13, 70, 43, 0.08);
         }
 
         .service-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            font-weight: 800;
             color: var(--primary-color);
             margin-bottom: 0.8rem;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.65;
         }
 
         /* About Section */
         .about-section {
             background: var(--white);
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 2rem auto;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-radius: 24px;
+            padding: 3.5rem;
+            margin: 1rem auto;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 3rem;
             align-items: center;
+        }
+
+        .about-grid h2 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .about-grid p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .why-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border-right: 5px solid var(--accent-color);
+            border-left: 1px solid #e2e8f0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .why-card ul li {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         @media (max-width: 768px) {
             .about-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 2.3rem; }
             .nav-links { display: none; }
+            .about-section { padding: 2rem; }
+            .hero { padding: 5rem 1.5rem 4.5rem; }
         }
 
         /* Call to Action */
         .cta-box {
-            background: linear-gradient(135deg, var(--primary-color), #08301d);
+            background: linear-gradient(135deg, var(--primary-color), #072416);
             color: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
+            padding: 3.5rem 2.5rem;
+            border-radius: 24px;
             text-align: center;
-            margin: 4rem auto;
+            box-shadow: 0 20px 40px -15px rgba(13, 70, 43, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(198, 146, 20, 0.15) 0%, transparent 60%);
+            pointer-events: none;
         }
 
         .cta-box h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
+            font-weight: 800;
             margin-bottom: 1rem;
             color: var(--accent-color);
         }
@@ -276,7 +538,7 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: stretch;
         }
 
@@ -289,87 +551,71 @@
 
         .contact-form-card {
             background: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            border-top: 4px solid var(--accent-color);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-top: 5px solid var(--accent-color);
         }
 
         .contact-form-card h3 {
             color: var(--primary-color);
-            font-size: 1.4rem;
+            font-size: 1.6rem;
+            font-weight: 800;
             margin-bottom: 0.4rem;
         }
 
         .contact-form-card > p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.6rem;
+            font-size: 1rem;
+            margin-bottom: 1.8rem;
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
             text-align: inherit;
         }
 
         .form-group label {
             display: block;
             font-weight: 700;
-            font-size: 0.92rem;
-            color: var(--dark-color);
-            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #334155;
+            margin-bottom: 8px;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 0.75rem 1rem;
-            border: 1.5px solid #dfe3e6;
-            border-radius: 10px;
+            padding: 0.85rem 1.2rem;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 14px;
             font-family: 'Tajawal', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--dark-color);
-            background: var(--light-bg);
-            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #f8fafc;
+            transition: var(--transition-bounce);
         }
 
         .form-group input:focus,
         .form-group select:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(13,70,43,0.12);
+            box-shadow: 0 0 0 4px rgba(13,70,43,0.12);
             background: var(--white);
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: var(--primary-color);
-            color: var(--white);
-            border: none;
-            padding: 0.9rem 1.4rem;
-            border-radius: 30px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 0.4rem;
-        }
-
-        .btn-submit:hover {
-            background: #08301d;
-            box-shadow: 0 4px 12px rgba(13,70,43,0.3);
         }
 
         .form-success {
             display: none;
             text-align: center;
-            padding: 1.4rem;
-            border-radius: 12px;
-            background: #eaf4ec;
+            padding: 1.6rem;
+            border-radius: 16px;
+            background: #f0fdf4;
             border: 1.5px solid var(--primary-color);
             color: var(--primary-color);
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 12px rgba(13, 70, 43, 0.08);
         }
 
         .form-success.show {
@@ -378,6 +624,7 @@
 
         @media (max-width: 768px) {
             .contact-grid { grid-template-columns: 1fr; }
+            .contact-form-card { padding: 2rem; }
         }
 
         /* Footer */
@@ -385,13 +632,15 @@
             background: var(--dark-color);
             color: var(--white);
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 2.5rem 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid #1e293b;
         }
 
         footer p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -471,16 +720,16 @@
         <div class="about-section">
             <div class="about-grid">
                 <div>
-                    <h2 style="color: var(--primary-color); margin-bottom: 1rem;" data-key="aboutTitle">عن بيزنس جيت (Business Gate)</h2>
-                    <p style="color: #444; margin-bottom: 1rem;" data-key="aboutP1">نحن شريكك الاستراتيجي الموثوق لتأسيس وتطوير الشركات في دولة قطر. نمتلك خبرة عميقة في بيئة الأعمال المحلية ونقدم لك حلولاً متكاملة تختصر عليك الوقت والجهد.</p>
-                    <p style="color: #444;" data-key="aboutP2">سواء كنت تبدأ مشروك الأول أو تتوسع بستثماراتك، نضمن لك الانطلاقة الأسرع والأكثر أماناً.</p>
+                    <h2 style="color: var(--primary-color); margin-bottom: 1.2rem;" data-key="aboutTitle">عن بيزنس جيت (Business Gate)</h2>
+                    <p style="color: #475569; margin-bottom: 1.2rem;" data-key="aboutP1">نحن شريكك الاستراتيجي الموثوق لتأسيس وتطوير الشركات في دولة قطر. نمتلك خبرة عميقة في بيئة الأعمال المحلية ونقدم لك حلولاً متكاملة تختصر عليك الوقت والجهد.</p>
+                    <p style="color: #475569;" data-key="aboutP2">سواء كنت تبدأ مشروك الأول أو تتوسع بستثماراتك، نضمن لك الانطلاقة الأسرع والأكثر أماناً.</p>
                 </div>
-                <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-right: 4px solid var(--accent-color);">
-                    <h3 style="color: var(--primary-color); margin-bottom: 10px;" data-key="whyTitle">لماذا تختار بيزنس جيت؟</h3>
+                <div class="why-card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 14px; font-size: 1.3rem; font-weight: 800;" data-key="whyTitle">لماذا تختار بيزنس جيت؟</h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 8px;" data-key="why1">✓ سرعة وكفاءة في تنفيذ المعاملات</li>
-                        <li style="margin-bottom: 8px;" data-key="why2">✓ فريق استشاري ذو خبرة عالية</li>
-                        <li style="margin-bottom: 8px;" data-key="why3">✓ دعم متكامل من الألف إلى الياء</li>
+                        <li style="margin-bottom: 10px;" data-key="why1">✓ سرعة وكفاءة في تنفيذ المعاملات</li>
+                        <li style="margin-bottom: 10px;" data-key="why2">✓ فريق استشاري ذو خبرة عالية</li>
+                        <li style="margin-bottom: 10px;" data-key="why3">✓ دعم متكامل من الألف إلى الياء</li>
                     </ul>
                 </div>
             </div>
@@ -495,8 +744,8 @@
         <div class="contact-grid">
             <div class="cta-box">
                 <h2 data-key="ctaTitle">هل أنت جاهز لإطلاق مشروعك اليوم؟</h2>
-                <p style="margin-bottom: 2rem;" data-key="ctaDesc">تواصل مع فريقنا الآن للحصول على استشارة أولية مجانية لبدء عملك في قطر.</p>
-                <a href="https://wa.me/97430886552" target="_blank" class="btn-gold" style="font-size: 1.1rem; padding: 0.9rem 2.5rem;" data-key="whatsappBtn">📱 تواصل عبر الواتساب</a>
+                <p style="margin-bottom: 2.2rem; font-size: 1.1rem; opacity: 0.95;" data-key="ctaDesc">تواصل مع فريقنا الآن للحصول على استشارة أولية مجانية لبدء عملك في قطر.</p>
+                <a href="https://wa.me/97430886552" target="_blank" class="btn-gold" style="font-size: 1.1rem; padding: 1rem 2.6rem;" data-key="whatsappBtn">📱 تواصل عبر الواتساب</a>
             </div>
 
             <div class="contact-form-card">
