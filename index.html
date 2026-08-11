@@ -71,7 +71,7 @@
             transform: scale(1.02);
         }
 
-        /* اللوجو الجديد الرسمي */
+        /* اللوجو الرسمي */
         .logo-img {
             height: 52px;
             width: auto;
@@ -608,6 +608,17 @@
             background: var(--white);
         }
 
+        /* الخيار الفرعي الديناميكي */
+        #subServiceGroup, #customServiceGroup {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .form-success {
             display: none;
             text-align: center;
@@ -698,7 +709,7 @@
             <div class="service-card">
                 <span class="service-icon">📝</span>
                 <h3 data-key="service3Title">التسجيل القانوني</h3>
-                <p data-key="service3Desc">المساعدة في صياغة العقود واستخراج التراخيص اللازمة وضمان التزام مشروعك بالأنظمة والقوانين.</p>
+                <p data-key="service3Desc">صياغة العقود واستخراج التراخيص اللازمة وضمان التزام مشروعك بالأنظمة والقوانين.</p>
             </div>
             <div class="service-card">
                 <span class="service-icon">🤝</span>
@@ -711,9 +722,14 @@
                 <p data-key="service5Desc">تخطيط مالي وهيكلة إدارية ممتازة لرفع كفاءة تشغيل شركتك وتحقيق أقصى ربحية.</p>
             </div>
             <div class="service-card">
+                <span class="service-icon">👥</span>
+                <h3 data-key="service6Title">كفاءة التوظيف واستقطاب الكفاءات</h3>
+                <p data-key="service6Desc">استقطاب الكوادر والقيادات التنفيذية وتطوير الهياكل التنظيمية لبناء فريق عمل احترافي.</p>
+            </div>
+            <div class="service-card">
                 <span class="service-icon">🚀</span>
-                <h3 data-key="service6Title">دعم مستمر لنمو الأعمال والاستثمارات</h3>
-                <p data-key="service6Desc">شراكة استراتيجية مستمرة لتطوير أعمالك وتوسيع نطاق استثماراتك داخل وخارج قطر.</p>
+                <h3 data-key="service7Title">دعم مستمر لنمو الأعمال والاستثمارات</h3>
+                <p data-key="service7Desc">شراكة استراتيجية مستمرة لتطوير أعمالك وتوسيع نطاق استثماراتك داخل وخارج قطر.</p>
             </div>
         </div>
     </section>
@@ -782,9 +798,24 @@
                             <option value="legal-registration" id="optLegal">التسجيل القانوني والتراخيص</option>
                             <option value="feasibility-study" id="optFeasibility">دراسة الجدوى الاقتصادية</option>
                             <option value="financial-consulting" id="optFinancial">استشارات مالية وإدارية</option>
+                            <option value="talent-management" id="optTalent">كفاءة التوظيف واستقطاب الكفاءات (Talent Management)</option>
                             <option value="business-growth" id="optGrowth">دعم نمو الأعمال والاستثمارات</option>
                             <option value="other" id="optOther">خدمة أخرى</option>
                         </select>
+                    </div>
+
+                    <!-- التفرع الفرعي الديناميكي لكافة الخدمات -->
+                    <div class="form-group" id="subServiceGroup">
+                        <label for="subServiceType" id="subServiceLabel" data-key="labelSubService">تفاصيل الخدمة المطلوبة</label>
+                        <select id="subServiceType" name="subServiceType">
+                            <!-- يتم تعبئة الخيارات ديناميكياً بواسطة JavaScript -->
+                        </select>
+                    </div>
+
+                    <!-- حقل إضافي في حال اختيار "خدمة أخرى" -->
+                    <div class="form-group" id="customServiceGroup">
+                        <label for="customService" id="customServiceLabel" data-key="labelCustomService">وضح الخدمة المطلوب الاستفسار عنها</label>
+                        <input type="text" id="customService" name="customService" placeholder="اكتب تفاصيل الخدمة التي تحتاجها">
                     </div>
 
                     <button type="submit" class="btn-submit" id="btnSubmit" data-key="btnSubmit">إرسال الطلب</button>
@@ -821,13 +852,15 @@
                 service2Title: "التقييم الاستثماري",
                 service2Desc: "العناية الاستثمارية والفحص التجاري والسوقي وتقييم المخاطر.",
                 service3Title: "التسجيل القانوني",
-                service3Desc: "المساعة في صياغة العقود واستخراج التراخيص اللازمة وضمان التزام مشروعك بالأنظمة والقوانين.",
+                service3Desc: "صياغة العقود واستخراج التراخيص اللازمة وضمان التزام مشروعك بالأنظمة والقوانين.",
                 service4Title: "الجدوى الاقتصادية",
                 service4Desc: "دراسات تحليليّة شاملة للسوق والفرص الاستثمارية لضمان نجاح واستدامة مشروعك.",
                 service5Title: "استشارات مالية وإدارية متكاملة",
                 service5Desc: "تخطيط مالي وهيكلة إدارية ممتازة لرفع كفاءة تشغيل شركتك وتحقيق أقصى ربحية.",
-                service6Title: "دعم مستمر لنمو الأعمال والاستثمارات",
-                service6Desc: "شراكة استراتيجية مستمرة لتطوير أعمالك وتوسيع نطاق استثماراتك داخل وخارج قطر.",
+                service6Title: "كفاءة التوظيف واستقطاب الكفاءات",
+                service6Desc: "استقطاب الكوادر والقيادات التنفيذية وتطوير الهياكل التنظيمية لبناء فريق عمل احترافي.",
+                service7Title: "دعم مستمر لنمو الأعمال والاستثمارات",
+                service7Desc: "شراكة استراتيجية مستمرة لتطوير أعمالك وتوسيع نطاق استثماراتك داخل وخارج قطر.",
                 aboutTitle: "عن بيزنس جيت (Business Gate)",
                 aboutP1: "نحن شريكك الاستراتيجي الموثوق لتأسيس وتطوير الشركات في دولة قطر. نمتلك خبرة عميقة في بيئة الأعمال المحلية ونقدم لك حلولاً متكاملة تختصر عليك الوقت والجهد.",
                 aboutP2: "سواء كنت تبدأ مشروك الأول أو تتوسع بستثماراتك، نضمن لك الانطلاقة الأسرع والأكثر أماناً.",
@@ -853,8 +886,12 @@
                 optLegal: "التسجيل القانوني والتراخيص",
                 optFeasibility: "دراسة الجدوى الاقتصادية",
                 optFinancial: "استشارات مالية وإدارية",
+                optTalent: "كفاءة التوظيف واستقطاب الكفاءات (Talent Management)",
                 optGrowth: "دعم نمو الأعمال والاستثمارات",
                 optOther: "خدمة أخرى",
+                labelSubService: "تفاصيل الخدمة الفرعية",
+                labelCustomService: "وضح الخدمة المطلوب الاستفسار عنها",
+                placeholderCustomService: "اكتب تفاصيل الخدمة التي تحتاجها",
                 btnSubmit: "إرسال الطلب",
                 btnSubmitting: "جاري الإرسال...",
                 formSuccessMsg: "✓ تم استلام طلبك بنجاح، وسيتواصل معك فريق بيزنس جيت في أقرب وقت ممكن.",
@@ -878,13 +915,15 @@
                 service2Title: "Investment Evaluation",
                 service2Desc: "Investment due diligence, commercial & market auditing, and risk assessment.",
                 service3Title: "Legal Registration",
-                service3Desc: "Assistance in contract drafting, obtaining necessary licenses, and ensuring full legal compliance.",
+                service3Desc: "Contract drafting, obtaining necessary licenses, and ensuring full legal compliance.",
                 service4Title: "Feasibility Studies",
                 service4Desc: "Comprehensive market analysis and investment opportunity evaluation for sustainable growth.",
                 service5Title: "Financial & Advisory Services",
                 service5Desc: "Financial planning and executive structuring to enhance operational efficiency and profitability.",
-                service6Title: "Business Growth Support",
-                service6Desc: "Ongoing strategic partnership to scale your business inside and outside Qatar.",
+                service6Title: "Talent Management & Recruitment",
+                service6Desc: "Attracting executive leaders, workforce efficiency assessment, and organizational structuring.",
+                service7Title: "Business Growth Support",
+                service7Desc: "Ongoing strategic partnership to scale your business inside and outside Qatar.",
                 aboutTitle: "About Business Gate",
                 aboutP1: "We are your trusted strategic partner for company formation and business development in Qatar. Deep expertise in the local market delivers seamless solutions saving you time and effort.",
                 aboutP2: "Whether launching your first enterprise or expanding existing operations, we ensure a secure and swift market entry.",
@@ -910,14 +949,101 @@
                 optLegal: "Legal & Licensing",
                 optFeasibility: "Feasibility Studies",
                 optFinancial: "Financial & Management Consulting",
+                optTalent: "Talent Management & Recruitment",
                 optGrowth: "Business Growth Support",
                 optOther: "Other Service",
+                labelSubService: "Sub-service Details",
+                labelCustomService: "Specify required service details",
+                placeholderCustomService: "Enter details of the service you need",
                 btnSubmit: "Submit Request",
                 btnSubmitting: "Submitting...",
                 formSuccessMsg: "✓ Your request has been received successfully. The Business Gate team will contact you shortly.",
                 footerText: "© 2026 All Rights Reserved - Business Gate",
                 errorAlert: "An error occurred while submitting. Please try again later or reach out via WhatsApp.",
                 connErrorAlert: "Connection error. Please check your internet connection."
+            }
+        };
+
+        // خيارات التفرعات لكل خدمة باللغتين
+        const subServicesData = {
+            'company-formation': {
+                label: { ar: 'نوع الشركة المراد تأسيسها', en: 'Type of Company to Establish' },
+                defaultOpt: { ar: 'اختر نوع الشركة', en: 'Select company type' },
+                options: [
+                    { value: 'llc', ar: 'شركة ذات مسؤولية محدودة (W.L.L / L.L.C)', en: 'Limited Liability Company (W.L.L / L.L.C)' },
+                    { value: 'one-person', ar: 'شركة الشخص الواحد', en: 'Single Person Company' },
+                    { value: 'foreign-branch', ar: 'فرع شركة أجنبية', en: 'Foreign Company Branch' },
+                    { value: 'free-zone', ar: 'شركة في المناطق الحرة (QFZ / QFC)', en: 'Free Zone Entity (QFZ / QFC)' },
+                    { value: 'holding', ar: 'شركة قابضة', en: 'Holding Company' },
+                    { value: 'sole-proprietorship', ar: 'مؤسسة فردية', en: 'Sole Proprietorship' },
+                    { value: 'other-comp', ar: 'نوع آخر / غير محدد بعد', en: 'Other / Not specified yet' }
+                ]
+            },
+            'investment-evaluation': {
+                label: { ar: 'مجال التقييم الاستثماري', en: 'Investment Evaluation Scope' },
+                defaultOpt: { ar: 'اختر نوع التقييم', en: 'Select evaluation type' },
+                options: [
+                    { value: 'due-diligence', ar: 'فحص نافي للجهالة (Due Diligence)', en: 'Financial & Legal Due Diligence' },
+                    { value: 'risk-assessment', ar: 'تقييم مخاطر الاستثمار', en: 'Investment Risk Assessment' },
+                    { value: 'company-valuation', ar: 'تقييم القيمة العادلة للشركة', en: 'Company Fair Valuation' },
+                    { value: 'asset-evaluation', ar: 'تقييم الأصول والمشاريع', en: 'Assets & Projects Valuation' },
+                    { value: 'other-eval', ar: 'استشارة تقييم أخرى', en: 'Other Valuation Service' }
+                ]
+            },
+            'legal-registration': {
+                label: { ar: 'نوع الإجراء القانوني', en: 'Type of Legal Procedure' },
+                defaultOpt: { ar: 'اختر نوع الخدمة القانونية', en: 'Select legal service type' },
+                options: [
+                    { value: 'contract-drafting', ar: 'صياغة ومراجعة العقود وتعديل عقد التأسيس', en: 'Contract Drafting & MOA Amendment' },
+                    { value: 'cr-licensing', ar: 'استخراج/تجديد السجل التجاري والترخيص البلدي', en: 'Commercial Registration & Municipal License' },
+                    { value: 'lease-attestation', ar: 'توثيق قيد العقارات والمكاتب (تأجير)', en: 'Office Lease Attestation' },
+                    { value: 'trademark-brand', ar: 'تسجيل العلامات التجارية والملكية الفكرية', en: 'Trademark & Intellectual Property' },
+                    { value: 'other-legal', ar: 'إجراء قانوني آخر', en: 'Other Legal Procedure' }
+                ]
+            },
+            'feasibility-study': {
+                label: { ar: 'نوع دراسة الجدوى المطلوبة', en: 'Feasibility Study Type' },
+                defaultOpt: { ar: 'اختر نوع الدراسة', en: 'Select study type' },
+                options: [
+                    { value: 'full-feasibility', ar: 'دراسة جدوى اقتصادية متكاملة', en: 'Comprehensive Feasibility Study' },
+                    { value: 'market-research', ar: 'دراسة وتحليل السوق والمنافسين', en: 'Market & Competitor Analysis' },
+                    { value: 'business-plan', ar: 'إعداد خطة عمل استراتيجية (Business Plan)', en: 'Strategic Business Plan' },
+                    { value: 'financial-model', ar: 'نمذجة ودراسة الجدوى المالية فقط', en: 'Financial Modeling Only' },
+                    { value: 'other-feasibility', ar: 'دراسة خاصة أخرى', en: 'Custom Study' }
+                ]
+            },
+            'financial-consulting': {
+                label: { ar: 'مجال الاستشارة المالية والإدارية', en: 'Financial/Admin Consultation Area' },
+                defaultOpt: { ar: 'اختر نوع الاستشارة', en: 'Select consultation type' },
+                options: [
+                    { value: 'restructuring', ar: 'إعادة الهيكلة الإدارية والمالية', en: 'Administrative & Financial Restructuring' },
+                    { value: 'budgeting-planning', ar: 'التخطيط المالي والموازنات التقديرية', en: 'Financial Planning & Budgeting' },
+                    { value: 'operational-efficiency', ar: 'تحسين كفاءة التشغيل وتقليل التكاليف', en: 'Operational Efficiency & Cost Reduction' },
+                    { value: 'governance', ar: 'استشارات الحوكمة والتنظيم', en: 'Corporate Governance Advisory' },
+                    { value: 'other-financial', ar: 'استشارة مالية/إدارية أخرى', en: 'Other Consulting Service' }
+                ]
+            },
+            'talent-management': {
+                label: { ar: 'مجال كفاءة التوظيف واستقطاب الكفاءات', en: 'Talent Management & Recruitment Area' },
+                defaultOpt: { ar: 'اختر مجال التوظيف والموارد البشرية', en: 'Select Talent Management service' },
+                options: [
+                    { value: 'executive-search', ar: 'توظيف الكفاءات والقيادات التنفيذية', en: 'Executive & Talent Acquisition' },
+                    { value: 'skills-assessment', ar: 'تقييم وتطوير كفاءة الكادر الوظيفي', en: 'Workforce Assessment & Development' },
+                    { value: 'hr-structuring', ar: 'صياغة الهياكل التنظيمية وسياسات التوظيف', en: 'Organizational Structuring & HR Policies' },
+                    { value: 'hr-advisory', ar: 'استشارات إدارة الموارد البشرية (HR)', en: 'HR Management Advisory' },
+                    { value: 'other-talent', ar: 'استشارة توظيف أخرى', en: 'Other Talent Service' }
+                ]
+            },
+            'business-growth': {
+                label: { ar: 'نوع دعم النمو المطلوب', en: 'Type of Growth Support' },
+                defaultOpt: { ar: 'اختر نوع دعم النمو', en: 'Select growth support type' },
+                options: [
+                    { value: 'expansion-strategy', ar: 'التوسع والتطوير الاستثماري', en: 'Investment Expansion & Scale-up' },
+                    { value: 'matchmaking', ar: 'البحث عن شركاء ومستثمرين', en: 'Investor & Partner Matchmaking' },
+                    { value: 'franchising', ar: 'حلول ودراسات الامتياز التجاري (Franchise)', en: 'Franchising Solutions' },
+                    { value: 'retained-advisory', ar: 'استشارات استراتيجية شهرية مستمرة', en: 'Ongoing Strategic Advisory' },
+                    { value: 'other-growth', ar: 'دعم نمو آخر', en: 'Other Growth Support' }
+                ]
             }
         };
 
@@ -958,6 +1084,7 @@
 
             document.getElementById('fullName').placeholder = data.placeholderName;
             document.getElementById('email').placeholder = data.placeholderEmail;
+            document.getElementById('customService').placeholder = data.placeholderCustomService;
 
             document.getElementById('optSelectDefault').innerText = data.optSelectDefault;
             document.getElementById('optCompany').innerText = data.optCompany;
@@ -965,11 +1092,66 @@
             document.getElementById('optLegal').innerText = data.optLegal;
             document.getElementById('optFeasibility').innerText = data.optFeasibility;
             document.getElementById('optFinancial').innerText = data.optFinancial;
+            document.getElementById('optTalent').innerText = data.optTalent;
             document.getElementById('optGrowth').innerText = data.optGrowth;
             document.getElementById('optOther').innerText = data.optOther;
 
+            // أعد تحديث التفرع إن كان مختاراً
+            updateSubServices();
+
             document.getElementById('footerText').innerHTML = data.footerText;
             document.getElementById('selectedLanguage').value = lang === 'ar' ? 'Arabic' : 'English';
+        }
+
+        // التحكم في ظهور القوائم الفرعية لجميع الخدمات
+        const serviceSelect = document.getElementById('serviceType');
+        const subServiceGroup = document.getElementById('subServiceGroup');
+        const subServiceLabel = document.getElementById('subServiceLabel');
+        const subServiceSelect = document.getElementById('subServiceType');
+        const customServiceGroup = document.getElementById('customServiceGroup');
+        const customServiceInput = document.getElementById('customService');
+
+        serviceSelect.addEventListener('change', updateSubServices);
+
+        function updateSubServices() {
+            const selectedVal = serviceSelect.value;
+
+            if (selectedVal && subServicesData[selectedVal]) {
+                const config = subServicesData[selectedVal];
+
+                // تعيين العنوان والخيارات بناء على اللغة الحالية
+                subServiceLabel.innerText = config.label[currentLang];
+                subServiceSelect.innerHTML = `<option value="" disabled selected>${config.defaultOpt[currentLang]}</option>`;
+
+                config.options.forEach(opt => {
+                    const optElem = document.createElement('option');
+                    optElem.value = opt.value;
+                    optElem.innerText = opt[currentLang];
+                    subServiceSelect.appendChild(optElem);
+                });
+
+                subServiceGroup.style.display = 'block';
+                subServiceSelect.setAttribute('required', 'required');
+
+                customServiceGroup.style.display = 'none';
+                customServiceInput.removeAttribute('required');
+                customServiceInput.value = '';
+            } else if (selectedVal === 'other') {
+                subServiceGroup.style.display = 'none';
+                subServiceSelect.removeAttribute('required');
+                subServiceSelect.value = '';
+
+                customServiceGroup.style.display = 'block';
+                customServiceInput.setAttribute('required', 'required');
+            } else {
+                subServiceGroup.style.display = 'none';
+                subServiceSelect.removeAttribute('required');
+                subServiceSelect.value = '';
+
+                customServiceGroup.style.display = 'none';
+                customServiceInput.removeAttribute('required');
+                customServiceInput.value = '';
+            }
         }
 
         // Formspree Handling
